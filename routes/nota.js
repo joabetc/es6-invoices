@@ -1,28 +1,28 @@
-const notas = [
+const invoices = [
     {
-        data: '2017-10-31',
-        itens: [
-            { codigo: '2143', valor: 200 },
-            { codigo: '2111', valor: 500 }
+        date: '2017-10-31',
+        items: [
+            { id: '2143', value: 200 },
+            { id: '2111', value: 500 }
         ]
     },
     {
-        data: '2017-07-12',
-        itens: [
-            { codigo: '2222', valor: 120 },
-            { codigo: '2143', valor: 280 }
+        date: '2017-07-12',
+        items: [
+            { id: '2222', value: 120 },
+            { id: '2143', value: 280 }
         ]
     }, 
     {
-        data: '2017-02-02',
-        itens: [
-            { codigo: '2143', valor: 110 },
-            { codigo: '7777', valor: 390 }
+        date: '2017-02-02',
+        items: [
+            { id: '2143', value: 110 },
+            { id: '7777', value: 390 }
         ]
     },     
 ];
 
 module.exports = app => {
 
-    app.get('/notas', (req, res) => res.json(notas));
+    app.get('/notas', (req, res) => res.json(invoices));
 }
