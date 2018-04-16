@@ -1,4 +1,4 @@
-import { handleStatus } from './utils/promise-helpers.js';
+import { handleStatus, log } from './utils/promise-helpers.js';
 
 document
     .querySelector('#myButton')
@@ -6,11 +6,9 @@ document
         fetch('http://localhost:3000/notas')
             .then(handleStatus)
             .then(invoices => invoices.reduce((array, invoice) => array.concat(invoice.items), []))
-            .then(items => {
-                console.log(items);
-                return items;
-            })
+            .then(log)
             .then(items => items.filter(item => item.id == '2143'))
+            .then(log)
             .then(items => items.reduce((total, item) => total + item.value, 0))
             .then(console.log)
             .catch(console.log);
