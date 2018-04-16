@@ -1,3 +1,7 @@
 document
     .querySelector('#myButton')
-    .onclick = () => alert('hi');
+    .onclick = () => 
+        fetch(`http://localhost:3000/notas`)
+            .then(res => res.json())
+            .then(invoices => console.log(invoices))
+            .catch(console.log);
