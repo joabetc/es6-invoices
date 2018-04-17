@@ -4,10 +4,10 @@ import { invoiceService as service } from './invoice/service.js';
 import { takeUntil, debounceTime, partialize, pipe } from './utils/operators.js';
 
 const p1 = new Promise((resolve, reject) => 
-    setTimeout(() => resolve('Promise 1 finished'), 3000));
+    setTimeout(() => resolve('Promise 1 finished'), 2000));
 
 const p2 = new Promise((resolve, reject) => 
-    setTimeout(() => resolve('Promise 2 finished'), 1000));
+    setTimeout(() => reject('Promise 2 canceled'), 1000));
 
 Promise.race([p1, p2])
     .then(console.log)
