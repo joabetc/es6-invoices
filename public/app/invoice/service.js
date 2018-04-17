@@ -1,5 +1,5 @@
 import { handleStatus } from '../utils/promise-helpers.js';
-import { partialize } from '../utils/operators.js';
+import { partialize, compose } from '../utils/operators.js';
 
 const API = 'http://localhost:3000/notas';
 
@@ -18,13 +18,8 @@ export const invoiceService = {
     },
     sumItems(code) {
         const filterItems = partialize(filterItemsByCode, code);
+        const sumItems = compose(sumItemsValue, filterItems, getItemsFromInvoices);
         return this.listAll()
-            .then(invoices => 
-                sumItemsValue(
-                    filterItems(
-                        getItemsFromInvoices(invoices)
-                    )
-                )
-            );
+            .then(sumItems);
     }
 };
