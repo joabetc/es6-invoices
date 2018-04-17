@@ -9,7 +9,12 @@ const sumItemsValue = items => items.reduce((total, item) => total + item.value,
 
 export const invoiceService = {
     listAll() {
-        return fetch(API).then(handleStatus);
+        return fetch(API)
+            .then(handleStatus)
+            .catch(err => {
+                console.log(err);
+                return Promise.reject('It was not possible to retrieve invoices data');
+            });
     },
     sumItems(code) {
         const filterItems = partialize(filterItemsByCode, code);
