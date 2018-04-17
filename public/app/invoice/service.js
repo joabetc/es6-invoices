@@ -13,6 +13,13 @@ export const invoiceService = {
     },
     sumItems(code) {
         const filterItems = partialize(filterItemsByCode, code);
-        return this.listAll().then(sumItems(code));
+        return this.listAll()
+            .then(invoices => 
+                sumItemsValue(
+                    filterItems(
+                        getItemsFromInvoices(invoices)
+                    )
+                )
+            );
     }
 };
