@@ -1,4 +1,4 @@
-const events = Map();
+const events = new Map();
 
 export const EventEmitter = {
     on(event, listener) {
