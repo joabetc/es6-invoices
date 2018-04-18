@@ -8,7 +8,7 @@ import { Maybe } from './utils/maybe.js'
 const value = Maybe.of(null)
     .map(value => value + 10)
     .map(value => value + 30)
-    .get();
+    .getOrElse(0);
 alert(value);
 
 const operations = pipe(

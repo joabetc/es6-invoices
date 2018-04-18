@@ -12,11 +12,12 @@ export class Maybe {
     }
 
     map(fn) {
-        if (this.isNothing) return Maybe.of(null);
+        if (this.isNothing()) return Maybe.of(null);
         return Maybe.of(fn(this._value));
     }
 
-    get() {
+    getOrElse(value) {
+        if (this.isNothing()) return value;
         return this._value;
     }
 }
