@@ -3,6 +3,9 @@ import './utils/array-helpers.js';
 import { invoiceService as service } from './invoice/service.js';
 import { takeUntil, debounceTime, partialize, pipe } from './utils/operators.js';
 import { EventEmitter } from './utils/event-emitter.js';
+import { Maybe } from './utils/maybe.js'
+
+const maybe = Maybe.of(10);
 
 const operations = pipe(
     partialize(takeUntil, 3),

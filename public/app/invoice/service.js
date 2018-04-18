@@ -11,10 +11,6 @@ export const invoiceService = {
     listAll() {
         return fetch(API)
             .then(handleStatus)
-            .then(invoices => {
-                if (invoices) return invoices;
-                return [];
-            })
             .catch(err => {
                 console.log(err);
                 return Promise.reject('It was not possible to retrieve invoices data');
